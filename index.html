@@ -1,0 +1,87 @@
+---
+layout: default
+---
+
+<div class="teaserimage">
+    <div class="teaserimage-image" {% if site.cover %}style="background-image: url({{ site.cover }})"{% endif %}>
+        Teaser Image
+    </div>
+</div>
+
+<header class="blog-header">
+    {% if site.logo %}
+      <a class="blog-logo" href="{{site.url}}" style="background-image: url('{{ site.logo }}')">{{ site.title }}</a>
+    {% endif %}
+    <h1 class="blog-title">{{ site.title }}</h1>
+    <h2 class="blog-description">{{ site.description }}</h2>
+    <div class="custom-links">
+      {% for social in site.social %}
+        <a class="icon-{{ social.icon }}" href="{{ social.url }}">
+          <i class="fa fa-{{ social.icon }}"></i>
+        </a>
+        &nbsp;&nbsp;·&nbsp;&nbsp;
+      {% endfor %}
+	  <a href="/resources/">Resources</a>
+    </div>
+</header>
+
+<script>
+    (function ($) {
+        "use strict";
+
+        $(document).ready(function(){
+
+            var $window = $(window),
+                $image = $('.teaserimage-image');
+            $window.on('scroll', function() {
+                var top = $window.scrollTop();
+
+                if (top < 0 || top > 1500) { return; }
+                $image
+                    .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+                    .css('opacity', 1-Math.max(top/700, 0));
+            });
+            $window.trigger('scroll');
+
+        });
+
+    }(jQuery));
+</script>
+
+<main class="content" role="main">
+	<section class="post-content">
+		<a name="topofpage"></a>
+		<h1>What is HackHub?</h1>
+
+		<p>HackHub is a new student group dedicated to teaching people how to make stuff with code. We are planning to host workshops throughout the year dedicated to topics like</p>
+
+		<ul>
+			<li>web development</li>
+			<li>web design</li>
+			<li>game development</li>
+			<li>app development</li>
+			<li>...etc</li>
+		</ul>
+
+		<h1>What kind of workshops?</h1>
+
+		<p>Some of the workshops we have planned include</p>
+
+		<ul>
+			<li>Make your first website (HTML &amp; CSS primer)</li>
+			<li>How to use git</li>
+			<li>Web development with Django</li>
+			<li>How to pass tech interviews</li>
+			<li>...etc</li>
+		</ul>
+
+		<h1>When do you start?</h1>
+
+		<p>We're planning on starting up this school year in October.</p>
+
+		<h1>Want to join?</h1>
+
+		<p>Come sign up for our mailing list, we'll be sending out emails when we launch!</p>
+	</section>
+
+</main>
